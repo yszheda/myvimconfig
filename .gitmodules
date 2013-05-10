@@ -28,3 +28,15 @@
 [submodule "bundle/OmniCppComplete"]
 	path = bundle/OmniCppComplete
 	url = git://github.com/vim-scripts/OmniCppComplete.git
+[submodule "bundle/ultisnips"]
+	path = bundle/ultisnips
+	url = https://github.com/SirVer/ultisnips
+[submodule "bundle/taglist"]
+	path = bundle/taglist
+	url = git://github.com/vim-scripts/taglist.vim.git
+[submodule "bundle/checksyntax"]
+	path = bundle/checksyntax
+	url = git://github.com/tomtom/checksyntax_vim.git
+[submodule "bundle/CmdlineComplete"]
+	path = bundle/CmdlineComplete
+	url = git://github.com/vim-scripts/CmdlineComplete.git
