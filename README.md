@@ -4,7 +4,7 @@ The common vim configuration that I used.
 
 It is mainly used under Linux, but it also works fine for windows gvim.
 
-Currently I use pathogen[https://github.com/tpope/vim-pathogen] to manage my vim plugins.
+Currently I use [pathogen](https://github.com/tpope/vim-pathogen) to manage my vim plugins.
 
 #Usage#
 
