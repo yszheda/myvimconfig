@@ -10,6 +10,10 @@
 "  for MS-DOS and Win32:  $VIM\_vimrc
 "	    for OpenVMS:  sys$login:.vimrc
 
+" add pathogen to manage plugins.
+runtime bundle/vim-pathogen/autoload/pathogen.vim
+call pathogen#infect()
+
 " added by ys
 " 2011-8-4
 " reference: Vimer's blogs
