@@ -4,3 +4,21 @@
 [submodule "bundle/nerdtree"]
 	path = bundle/nerdtree
 	url = https://github.com/scrooloose/nerdtree.git
+[submodule "bundle/vim-latex"]
+	path = bundle/vim-latex
+	url = git://vim-latex.git.sourceforge.net/gitroot/vim-latex/vim-latex
+[submodule "bundle/c"]
+	path = bundle/c
+	url = git://github.com/vim-scripts/c.vim.git
+[submodule "bundle/a"]
+	path = bundle/a
+	url = git://github.com/vim-scripts/a.vim.git
+[submodule "bundle/FencView"]
+	path = bundle/FencView
+	url = git://github.com/vim-scripts/FencView.vim.git
+[submodule "bundle/DoxygenToolkit"]
+	path = bundle/DoxygenToolkit
+	url = git://github.com/vim-scripts/DoxygenToolkit.vim.git
+[submodule "bundle/fcitx"]
+	path = bundle/fcitx
+	url = git://github.com/vim-scripts/fcitx.vim.git
