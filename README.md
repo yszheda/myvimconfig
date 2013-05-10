@@ -1,11 +1,14 @@
 # Myvimconfig
 
 The common vim configuration that I used.
+
 It is mainly used under Linux, but it also works fine for windows gvim.
 
-##Usage##
+Currently I use pathogen[https://github.com/tpope/vim-pathogen] to manage my vim plugins.
 
-#Install#
+#Usage#
+
+##Install##
 ```bash
 git clone https://github.com/yszheda/myvimconfig.git ~/.vim
 ln -s ~/.vim/vimrc ~/.vimrc
@@ -14,12 +17,12 @@ git submodule init
 git submodule update
 ```
 
-#Update All the Plugins#
+##Update All the Plugins##
 ```bash
 git submodule foreach git pull origin master
 ```
 
-#Delete Plugin#
+##Delete Plugin##
 ```bash
 git rm bundle/<plugin-name>
 ```
