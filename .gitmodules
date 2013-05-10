@@ -22,3 +22,9 @@
 [submodule "bundle/fcitx"]
 	path = bundle/fcitx
 	url = git://github.com/vim-scripts/fcitx.vim.git
+[submodule "bundle/omlet"]
+	path = bundle/omlet
+	url = git://github.com/vim-scripts/omlet.vim.git
+[submodule "bundle/OmniCppComplete"]
+	path = bundle/OmniCppComplete
+	url = git://github.com/vim-scripts/OmniCppComplete.git
