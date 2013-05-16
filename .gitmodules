@@ -40,3 +40,15 @@
 [submodule "bundle/CmdlineComplete"]
 	path = bundle/CmdlineComplete
 	url = git://github.com/vim-scripts/CmdlineComplete.git
+[submodule "bundle/SearchComplete"]
+	path = bundle/SearchComplete
+	url = git://github.com/vim-scripts/SearchComplete.git
+[submodule "bundle/vim-bufexplorer"]
+	path = bundle/vim-bufexplorer
+	url = git://github.com/thisivan/vim-bufexplorer.git
+[submodule "bundle/Trinity"]
+	path = bundle/Trinity
+	url = git://github.com/wesleyche/Trinity.git
+[submodule "bundle/snipMate"]
+	path = bundle/snipMate
+	url = git://github.com/msanders/snipmate.vim.git
