@@ -56,7 +56,7 @@ set tabstop=4		" set the appearance of <TABLE> equals to 4 spaces
 " set nowrap		" never automatically change line
 " set the font
 " set guifont=Bitstream_Vera_Sans_Mono:h9:cANSI
-" set gfw=幼圆:h10:cGB2312
+" set gfw=幼?:h10:cGB2312
 
 " For Win32 GUI: remove 't' flag from 'guioptions': no tearoff menu entries
 " let &guioptions = substitute(&guioptions, "t", "", "g")
@@ -147,7 +147,11 @@ autocmd! bufwritepost .vimrc source ~/.vimrc
 " added by ys
 " 2011-7-21
 map <F3> :silent! Tlist<CR>
-let Tlist_Ctags_Cmd = '/usr/bin/ctags'
+if g:iswindows==1
+  let Tlist_Ctags_Cmd = 'ctags'
+else
+  let Tlist_Ctags_Cmd = '/usr/bin/ctags'
+endif
 let Tlist_Show_One_File = 1
 let Tlist_File_Fold_Auto_Close = 1
 let Tlist_Exit_OnlyWindow = 1
@@ -293,3 +297,10 @@ endfunction
 autocmd BufNewFile *.{h,hpp} call <SID>insert_gates()
 
 let g:C_SourceCodeExtensions  = 'h cc cp cxx cpp CPP c++ C i ii'
+" windows gvim font setting
+" use Exuberant Ctags for win32
+if g:iswindows==1
+  set guifont=Consolas:h12
+  set tags=tags;
+  set autochdir
+endif
