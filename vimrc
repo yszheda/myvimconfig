@@ -147,7 +147,11 @@ autocmd! bufwritepost .vimrc source ~/.vimrc
 " added by ys
 " 2011-7-21
 map <F3> :silent! Tlist<CR>
-let Tlist_Ctags_Cmd = '/usr/bin/ctags'
+if g:iswindows==1
+  let Tlist_Ctags_Cmd = 'ctags'
+else
+  let Tlist_Ctags_Cmd = '/usr/bin/ctags'
+endif
 let Tlist_Show_One_File = 1
 let Tlist_File_Fold_Auto_Close = 1
 let Tlist_Exit_OnlyWindow = 1
@@ -282,3 +286,11 @@ filetype indent on
 let g:tex_flavor='latex'
 
 set nu
+
+" windows gvim font setting
+" use Exuberant Ctags for win32
+if g:iswindows==1
+  set guifont=Consolas:h12
+  set tags=tags;
+  set autochdir
+endif
