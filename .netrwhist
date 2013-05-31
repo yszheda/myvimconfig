@@ -1,9 +1,2 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =7
-let g:netrw_dirhist_1='/home/ys/.vim/c-support'
-let g:netrw_dirhist_2='/home/ys/.vim'
-let g:netrw_dirhist_3='/home/ys/.vim/ftplugin'
-let g:netrw_dirhist_4='/home/ys/.vim'
-let g:netrw_dirhist_5='/home/ys/.vim/plugin.avail'
-let g:netrw_dirhist_6='/home/ys/Downloads/WatorWorldStarterCode'
-let g:netrw_dirhist_7='/etc/network.d'
+let g:netrw_dirhist_cnt =0

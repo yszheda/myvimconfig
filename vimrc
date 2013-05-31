@@ -282,3 +282,14 @@ filetype indent on
 let g:tex_flavor='latex'
 
 set nu
+
+function! s:insert_gates()
+  let gatename = substitute(toupper(expand("%:t")), "\\.", "_", "g")
+  execute "normal! i#ifndef " . gatename
+  execute "normal! o#define " . gatename . " "
+  execute "normal! Go#endif /* " . gatename . " */"
+  normal! kk
+endfunction
+autocmd BufNewFile *.{h,hpp} call <SID>insert_gates()
+
+let g:C_SourceCodeExtensions  = 'h cc cp cxx cpp CPP c++ C i ii'
