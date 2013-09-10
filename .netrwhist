@@ -1,9 +1,9 @@
 let g:netrw_dirhistmax  =10
 let g:netrw_dirhist_cnt =7
-let g:netrw_dirhist_1='/home/ys/.vim/c-support'
-let g:netrw_dirhist_2='/home/ys/.vim'
-let g:netrw_dirhist_3='/home/ys/.vim/ftplugin'
-let g:netrw_dirhist_4='/home/ys/.vim'
-let g:netrw_dirhist_5='/home/ys/.vim/plugin.avail'
-let g:netrw_dirhist_6='/home/ys/Downloads/WatorWorldStarterCode'
-let g:netrw_dirhist_7='/etc/network.d'
+let g:netrw_dirhist_1='D:/Programming/ruby/helloWorld/demo/app'
+let g:netrw_dirhist_2='D:/Programming/ruby/helloWorld/demo/app/views'
+let g:netrw_dirhist_3='D:/Programming/ruby/helloWorld/demo/app/views/welcome'
+let g:netrw_dirhist_4='D:/Programming/C++ source code/boost_1_54_0/boost_1_54_0/boost/spirit/home/support/detail/lexer/parser/tree'
+let g:netrw_dirhist_5='C:/Users/ys'
+let g:netrw_dirhist_6='D:/Software/Vim'
+let g:netrw_dirhist_7='D:/Dropbox/galoisplusplus/source/_posts'
