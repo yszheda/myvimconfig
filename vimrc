@@ -238,9 +238,9 @@ function! Do_CsTag()
     endif
     if(executable('cscope') && has("cscope") )
         if(g:iswindows!=1)
-            silent! execute "!find . -name '*.h' -o -name '*.c' -o -name '*.cpp' -o -name '*.cu' -o -name '*.py' -o -name '*.java' -o -name '*.cs' > cscope.files"
+            silent! execute "!find . -name '*.h' -o -name '*.c' -o -name '*.cpp' -o -name '*.hpp' -o -name '*.cu' -o -name '*.py' -o -name '*.java' -o -name '*.cs' > cscope.files"
         else
-            silent! execute "!dir /s/b *.c,*.cpp,*.h,*.cu,*.py*.java,*.cs >> cscope.files"
+            silent! execute "!dir /s/b *.c,*.cpp, *.hpp, *.h,*.cu,*.py*.java,*.cs >> cscope.files"
         endif
         silent! execute "!cscope -b"
         execute "normal :"
