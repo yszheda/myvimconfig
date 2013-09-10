@@ -293,3 +293,7 @@ endfunction
 autocmd BufNewFile *.{h,hpp} call <SID>insert_gates()
 
 let g:C_SourceCodeExtensions  = 'h cc cp cxx cpp CPP c++ C i ii'
+
+" VimWiki settings
+let g:vimwiki_use_mouse = 1
+let g:vimwiki_list = [{"path": "~/Dropbox/VimWiki", "path_html": "~/Dropbox/VimWiki/Sites/wiki", "auto_export": 1}]
