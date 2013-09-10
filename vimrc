@@ -304,3 +304,7 @@ if g:iswindows==1
   set tags=tags;
   set autochdir
 endif
+
+" VimWiki settings
+let g:vimwiki_use_mouse = 1
+let g:vimwiki_list = [{"path": "D:/Dropbox/VimWiki", "path_html": "D:/Dropbox/VimWiki/Sites/wiki", "auto_export": 1}]
