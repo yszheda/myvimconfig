@@ -297,6 +297,7 @@ endfunction
 autocmd BufNewFile *.{h,hpp} call <SID>insert_gates()
 
 let g:C_SourceCodeExtensions  = 'h cc cp cxx cpp CPP c++ C i ii'
+
 " windows gvim font setting
 " use Exuberant Ctags for win32
 if g:iswindows==1
