@@ -298,14 +298,22 @@ autocmd BufNewFile *.{h,hpp} call <SID>insert_gates()
 
 let g:C_SourceCodeExtensions  = 'h cc cp cxx cpp CPP c++ C i ii'
 
-" windows gvim font setting
-" windows colorscheme setting: download molokai.vim to <vim{version}>/colors/
-" use Exuberant Ctags for win32
 if g:iswindows==1
+  " windows gvim font setting
   set guifont=Consolas:h14
+  " windows colorscheme setting: download molokai.vim to <vim{version}>/colors/
   colo molokai
+  " use Exuberant Ctags for win32
   set tags=tags;
   set autochdir
+  " encoding settings for chinese
+  set encoding=utf-8
+  set termencoding=utf-8
+  set fileencoding=utf-8
+  set fileencodings=ucs-bom,utf-8,chinese,cp936
+  source $VIMRUNTIME/delmenu.vim
+  source $VIMRUNTIME/menu.vim
+  language messages zh_CN.utf-8
 endif
 
 " VimWiki settings
