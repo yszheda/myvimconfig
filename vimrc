@@ -299,9 +299,11 @@ autocmd BufNewFile *.{h,hpp} call <SID>insert_gates()
 let g:C_SourceCodeExtensions  = 'h cc cp cxx cpp CPP c++ C i ii'
 
 " windows gvim font setting
+" windows colorscheme setting: download molokai.vim to <vim{version}>/colors/
 " use Exuberant Ctags for win32
 if g:iswindows==1
-  set guifont=Consolas:h12
+  set guifont=Consolas:h14
+  colo molokai
   set tags=tags;
   set autochdir
 endif
