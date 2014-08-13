@@ -1,10 +1,6 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =8
-let g:netrw_dirhist_1='/home/ys/Dropbox/LSAlab'
-let g:netrw_dirhist_2='/home/ys/Dropbox'
-let g:netrw_dirhist_3='/home/ys/Dropbox/hw'
-let g:netrw_dirhist_4='/home/ys/Dropbox/hw/PP'
-let g:netrw_dirhist_5='/home/ys/Dropbox/hw/PP/hw4'
-let g:netrw_dirhist_6='/home/ys/Dropbox/hw/PP/hw4/src'
-let g:netrw_dirhist_7='/home/ys/Dropbox/hw/PP/hw4/src/MPI'
-let g:netrw_dirhist_8='/home/ys/Dropbox/LSAlab/thesis/placement/naive/src'
+let g:netrw_dirhist_cnt =4
+let g:netrw_dirhist_1='/Users/DW/Development/ml/client/proj.ios_mac/ios/Resources'
+let g:netrw_dirhist_2='/Users/DW/Development/ml/client/proj.ios_mac/ios/Resources/sounds'
+let g:netrw_dirhist_3='/Users/DW/Development/ml/client/Classes'
+let g:netrw_dirhist_4='/Users/DW/Development/ml/client/Classes/Model'
