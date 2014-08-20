@@ -186,14 +186,14 @@ map <F2> :FencView<CR>
 " 2011-8-4
 " reference: Vimer's blogs
 map <F11> :call Do_CsTag()<CR>
-" nmap <C-@>s :cs find s <C-R>=expand("<cword>")<CR><CR>:copen<CR>
-" nmap <C-@>g :cs find g <C-R>=expand("<cword>")<CR><CR>
-" nmap <C-@>c :cs find c <C-R>=expand("<cword>")<CR><CR>:copen<CR>
-" nmap <C-@>t :cs find t <C-R>=expand("<cword>")<CR><CR>:copen<CR>
-" nmap <C-@>e :cs find e <C-R>=expand("<cword>")<CR><CR>:copen<CR>
-" nmap <C-@>f :cs find f <C-R>=expand("<cfile>")<CR><CR>:copen<CR>
-" nmap <C-@>i :cs find i ^<C-R>=expand("<cfile>")<CR>$<CR>:copen<CR>
-" nmap <C-@>d :cs find d <C-R>=expand("<cword>")<CR><CR>:copen<CR>
+nmap <C-@>s :cs find s <C-R>=expand("<cword>")<CR><CR>:copen<CR>
+nmap <C-@>g :cs find g <C-R>=expand("<cword>")<CR><CR>
+nmap <C-@>c :cs find c <C-R>=expand("<cword>")<CR><CR>:copen<CR>
+nmap <C-@>t :cs find t <C-R>=expand("<cword>")<CR><CR>:copen<CR>
+nmap <C-@>e :cs find e <C-R>=expand("<cword>")<CR><CR>:copen<CR>
+nmap <C-@>f :cs find f <C-R>=expand("<cfile>")<CR><CR>:copen<CR>
+nmap <C-@>i :cs find i ^<C-R>=expand("<cfile>")<CR>$<CR>:copen<CR>
+nmap <C-@>d :cs find d <C-R>=expand("<cword>")<CR><CR>:copen<CR>
 function! Do_CsTag()
     let dir = getcwd()
     if filereadable("tags")
@@ -304,3 +304,51 @@ let g:vimwiki_list = [{"path": "~/Dropbox/VimWiki", "path_html": "~/Dropbox/VimW
 
 " for Mac
 set clipboard=unnamed
+
+" automatically add header defend def
+function InsertHeadDef(firstLine, lastLine)
+    if a:firstLine <1 || a:lastLine> line('$')
+        echoerr 'InsertHeadDef : Range overflow !(FirstLine:'.a:firstLine.';LastLine:'.a:lastLine.';ValidRange:1~'.line('$').')'
+        return ''
+    endif
+    let sourcefilename=expand("%:t")
+    let definename=substitute(sourcefilename,' ','','g')
+    let definename=substitute(definename,'\.','_','g')
+    let definename = toupper(definename)
+    exe 'normal '.a:firstLine.'GO'
+    call setline('.', '#ifndef __'.definename."__")
+    normal ==o
+    call setline('.', '#define __'.definename."__")
+    exe 'normal =='.(a:lastLine-a:firstLine+1).'jo'
+    call setline('.', '#endif')
+    let goLn = a:firstLine+2
+    exe 'normal =='.goLn.'G'
+endfunction
+function InsertHeadDefN()
+    let firstLine = 1
+    let lastLine = line('$')
+    let n=1
+    while n < 20
+        let line = getline(n)
+        if n==1 
+            if line =~ '^\/\*.*$'
+                let n = n + 1
+                continue
+            else
+                break
+            endif
+        endif
+        if line =~ '^.*\*\/$'
+            let firstLine = n+1
+            break
+        endif
+        let n = n + 1
+    endwhile
+    call InsertHeadDef(firstLine, lastLine)
+endfunction
+nmap ,ha :call InsertHeadDefN()<CR>
+
+" enable c++11
+" make sure that clang is installed
+let g:syntastic_cpp_compiler = 'clang++'
+let g:syntastic_cpp_compiler_options = ' -std=c++11 -stdlib=libc++'
