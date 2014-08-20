@@ -303,7 +303,7 @@ let g:vimwiki_use_mouse = 1
 let g:vimwiki_list = [{"path": "~/Dropbox/VimWiki", "path_html": "~/Dropbox/VimWiki/Sites/wiki", "auto_export": 1}]
 
 " for Mac
-set clipboard=unnamed
+set clipboard+=unnamed
 
 " automatically add header defend def
 function InsertHeadDef(firstLine, lastLine)
@@ -348,7 +348,17 @@ function InsertHeadDefN()
 endfunction
 nmap ,ha :call InsertHeadDefN()<CR>
 
+" clang-complete setup
+let s:clang_library_path='/Library/Developer/CommandLineTools/usr/lib'
+if isdirectory(s:clang_library_path)
+    let g:clang_library_path=s:clang_library_path
+endif
+
 " enable c++11
 " make sure that clang is installed
 let g:syntastic_cpp_compiler = 'clang++'
 let g:syntastic_cpp_compiler_options = ' -std=c++11 -stdlib=libc++'
+
+" YouCompleteMe config
+let g:ycm_key_list_select_completion=[]
+let g:ycm_key_list_previous_completion=[]
