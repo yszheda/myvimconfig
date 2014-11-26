@@ -61,3 +61,9 @@
 [submodule "bundle/VimWiki"]
 	path = bundle/VimWiki
 	url = https://github.com/vim-scripts/vimwiki.git
+[submodule "bundle/vim-lua-ftplugin"]
+	path = bundle/vim-lua-ftplugin
+	url = git@github.com:xolox/vim-lua-ftplugin.git
+[submodule "bundle/vim-misc"]
+	path = bundle/vim-misc
+	url = git@github.com:xolox/vim-misc.git
