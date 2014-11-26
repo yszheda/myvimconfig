@@ -349,7 +349,8 @@ endfunction
 nmap ,ha :call InsertHeadDefN()<CR>
 
 " clang-complete setup
-let s:clang_library_path='/Library/Developer/CommandLineTools/usr/lib'
+" let s:clang_library_path='/Library/Developer/CommandLineTools/usr/lib'
+let s:clang_library_path='/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib'
 if isdirectory(s:clang_library_path)
     let g:clang_library_path=s:clang_library_path
 endif
