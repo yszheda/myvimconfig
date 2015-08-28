@@ -64,3 +64,6 @@
 [submodule "bundle/phpvim"]
 	path = bundle/phpvim
 	url = https://github.com/vim-scripts/phpvim.git
+[submodule "bundle/vim-jsbeautify"]
+	path = bundle/vim-jsbeautify
+	url = https://github.com/vim-scripts/vim-jsbeautify.git
