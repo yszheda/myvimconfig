@@ -297,3 +297,18 @@ let g:C_SourceCodeExtensions  = 'h cc cp cxx cpp CPP c++ C i ii'
 " VimWiki settings
 let g:vimwiki_use_mouse = 1
 let g:vimwiki_list = [{"path": "~/Dropbox/VimWiki", "path_html": "~/Dropbox/VimWiki/Sites/wiki", "auto_export": 1}]
+
+" server config
+colorscheme elflord
+
+" by default
+let g:jsbeautify_engine = "node"
+
+" If you bin name for node is nodejs
+let g:jsbeautify_engine = "nodejs"
+
+let g:jsbeautify_engine = "v8"
+
+" or if you have other alias
+let g:jsbeautify_engine = "v8-alias"
+" map <c-f> :call JsBeautify()<cr>
