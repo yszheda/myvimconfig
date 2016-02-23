@@ -363,3 +363,9 @@ let g:syntastic_cpp_compiler_options = ' -std=c++11 -stdlib=libc++'
 " YouCompleteMe config
 let g:ycm_key_list_select_completion=[]
 let g:ycm_key_list_previous_completion=[]
+
+" sliver_searcher config
+" configure ag.vim to always start searching from your project root instead of
+" the cwd
+" https://github.com/rking/ag.vim
+let g:ag_working_path_mode="r" 
