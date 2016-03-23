@@ -368,4 +368,4 @@ let g:ycm_key_list_previous_completion=[]
 " configure ag.vim to always start searching from your project root instead of
 " the cwd
 " https://github.com/rking/ag.vim
-let g:ag_working_path_mode="r" 
+" let g:ag_working_path_mode="r" 
