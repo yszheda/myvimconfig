@@ -19,15 +19,15 @@ call pathogen#infect()
 " reference: Vimer's blogs
 " check the current operating system
 if ( has("win32") || has("win95") || has("win64") )
-	let g:iswindows=1
+    let g:iswindows=1
 else
-	let g:iswindows=0
+    let g:iswindows=0
 endif
 autocmd BufEnter * lcd %:p:h
 
 " When started as "evim", evim.vim will already have done these settings.
 if v:progname =~? "evim"
-  finish
+    finish
 endif
 
 " Use Vim settings, rather than Vi settings (much better!).
@@ -39,9 +39,9 @@ set backspace=indent,eol,start whichwrap+=<,>,[,]
 " set backspace=indent,eol,start
 
 if has("vms")
-  set nobackup		" do not keep a backup file, use versions instead
+    set nobackup		" do not keep a backup file, use versions instead
 else
-  set backup		" keep a backup file
+    set backup		" keep a backup file
 endif
 set history=50		" keep 50 lines of command line history
 set ruler		" show the cursor position all the time
@@ -52,6 +52,9 @@ set incsearch		" do incremental searching
 " 2011-8-4
 " reference: Vimer's blogs
 set tabstop=4		" set the appearance of <TABLE> equals to 4 spaces
+set shiftwidth=4
+" expand tab with spaces
+set expandtab
 " set vb t_vb
 " set nowrap		" never automatically change line
 " set the font
@@ -70,57 +73,57 @@ inoremap <C-U> <C-G>u<C-U>
 
 " In many terminal emulators the mouse works just fine, thus enable it.
 if has('mouse')
-  set mouse=a
+    set mouse=a
 endif
 
 " added by ys
 " 2011-8-4
 " reference: Vimer's blogs
 if g:iswindows==1
-	if has('mouse')
-		set mouse=a
-	endif
-	au GUIEnter * simalt ~x
+    if has('mouse')
+        set mouse=a
+    endif
+    au GUIEnter * simalt ~x
 endif
 
 " Switch syntax highlighting on, when the terminal has colors
 " Also switch on highlighting the last used search pattern.
 if &t_Co > 2 || has("gui_running")
-  syntax on
-  set hlsearch
+    syntax on
+    set hlsearch
 endif
 
 " Only do this part when compiled with support for autocommands.
 if has("autocmd")
 
-  " Enable file type detection.
-  " Use the default filetype settings, so that mail gets 'tw' set to 72,
-  " 'cindent' is on in C files, etc.
-  " Also load indent files, to automatically do language-dependent indenting.
-  filetype plugin indent on
+    " Enable file type detection.
+    " Use the default filetype settings, so that mail gets 'tw' set to 72,
+    " 'cindent' is on in C files, etc.
+    " Also load indent files, to automatically do language-dependent indenting.
+    filetype plugin indent on
 
-  " Put these in an autocmd group, so that we can delete them easily.
-  augroup vimrcEx
-  au!
+    " Put these in an autocmd group, so that we can delete them easily.
+    augroup vimrcEx
+        au!
 
-  " For all text files set 'textwidth' to 78 characters.
-  autocmd FileType text setlocal textwidth=78
+        " For all text files set 'textwidth' to 78 characters.
+        autocmd FileType text setlocal textwidth=78
 
-  " When editing a file, always jump to the last known cursor position.
-  " Don't do it when the position is invalid or when inside an event handler
-  " (happens when dropping a file on gvim).
-  " Also don't do it when the mark is in the first line, that is the default
-  " position when opening a file.
-  autocmd BufReadPost *
-    \ if line("'\"") > 1 && line("'\"") <= line("$") |
-    \   exe "normal! g`\"" |
-    \ endif
+        " When editing a file, always jump to the last known cursor position.
+        " Don't do it when the position is invalid or when inside an event handler
+        " (happens when dropping a file on gvim).
+        " Also don't do it when the mark is in the first line, that is the default
+        " position when opening a file.
+        autocmd BufReadPost *
+                    \ if line("'\"") > 1 && line("'\"") <= line("$") |
+                    \   exe "normal! g`\"" |
+                    \ endif
 
-  augroup END
+    augroup END
 
 else
 
-  set autoindent		" always set autoindenting on
+    set autoindent		" always set autoindenting on
 
 endif " has("autocmd")
 
@@ -128,8 +131,8 @@ endif " has("autocmd")
 " file it was loaded from, thus the changes you made.
 " Only define it when not defined already.
 if !exists(":DiffOrig")
-  command DiffOrig vert new | set bt=nofile | r # | 0d_ | diffthis
-		  \ | wincmd p | diffthis
+    command DiffOrig vert new | set bt=nofile | r # | 0d_ | diffthis
+                \ | wincmd p | diffthis
 endif
 
 " Set mapleader
@@ -147,7 +150,8 @@ autocmd! bufwritepost .vimrc source ~/.vimrc
 " added by ys
 " 2011-7-21
 map <F3> :silent! Tlist<CR>
-let Tlist_Ctags_Cmd = '/usr/bin/ctags'
+" brew install ctags in /usr/local/bin/
+let Tlist_Ctags_Cmd = '/usr/local/bin/ctags'
 let Tlist_Show_One_File = 1
 let Tlist_File_Fold_Auto_Close = 1
 let Tlist_Exit_OnlyWindow = 1
@@ -182,14 +186,14 @@ map <F2> :FencView<CR>
 " 2011-8-4
 " reference: Vimer's blogs
 map <F11> :call Do_CsTag()<CR>
-" nmap <C-@>s :cs find s <C-R>=expand("<cword>")<CR><CR>:copen<CR>
-" nmap <C-@>g :cs find g <C-R>=expand("<cword>")<CR><CR>
-" nmap <C-@>c :cs find c <C-R>=expand("<cword>")<CR><CR>:copen<CR>
-" nmap <C-@>t :cs find t <C-R>=expand("<cword>")<CR><CR>:copen<CR>
-" nmap <C-@>e :cs find e <C-R>=expand("<cword>")<CR><CR>:copen<CR>
-" nmap <C-@>f :cs find f <C-R>=expand("<cfile>")<CR><CR>:copen<CR>
-" nmap <C-@>i :cs find i ^<C-R>=expand("<cfile>")<CR>$<CR>:copen<CR>
-" nmap <C-@>d :cs find d <C-R>=expand("<cword>")<CR><CR>:copen<CR>
+nmap <C-@>s :cs find s <C-R>=expand("<cword>")<CR><CR>:copen<CR>
+nmap <C-@>g :cs find g <C-R>=expand("<cword>")<CR><CR>
+nmap <C-@>c :cs find c <C-R>=expand("<cword>")<CR><CR>:copen<CR>
+nmap <C-@>t :cs find t <C-R>=expand("<cword>")<CR><CR>:copen<CR>
+nmap <C-@>e :cs find e <C-R>=expand("<cword>")<CR><CR>:copen<CR>
+nmap <C-@>f :cs find f <C-R>=expand("<cfile>")<CR><CR>:copen<CR>
+nmap <C-@>i :cs find i ^<C-R>=expand("<cfile>")<CR>$<CR>:copen<CR>
+nmap <C-@>d :cs find d <C-R>=expand("<cword>")<CR><CR>:copen<CR>
 function! Do_CsTag()
     let dir = getcwd()
     if filereadable("tags")
@@ -229,8 +233,7 @@ function! Do_CsTag()
         endif
     endif
     if(executable('ctags'))
-        "silent! execute "!ctags -R --c-types=+p --fields=+S *"
-        silent! execute "!ctags -R --c++-kinds=+p --fields=+iaS --extra=+q ."
+        silent! execute "!ctags -R --c-types=+p --fields=+S *"
     endif
     if(executable('cscope') && has("cscope") )
         if(g:iswindows!=1)
@@ -281,14 +284,15 @@ filetype indent on
 " The following changes the default filetype back to 'tex':
 let g:tex_flavor='latex'
 
+" enable line number
 set nu
 
 function! s:insert_gates()
-  let gatename = substitute(toupper(expand("%:t")), "\\.", "_", "g")
-  execute "normal! i#ifndef " . gatename
-  execute "normal! o#define " . gatename . " "
-  execute "normal! Go#endif /* " . gatename . " */"
-  normal! kk
+    let gatename = substitute(toupper(expand("%:t")), "\\.", "_", "g")
+    execute "normal! i#ifndef " . gatename
+    execute "normal! o#define " . gatename . " "
+    execute "normal! Go#endif /* " . gatename . " */"
+    normal! kk
 endfunction
 autocmd BufNewFile *.{h,hpp} call <SID>insert_gates()
 
@@ -312,3 +316,50 @@ let g:jsbeautify_engine = "v8"
 " or if you have other alias
 let g:jsbeautify_engine = "v8-alias"
 " map <c-f> :call JsBeautify()<cr>
+
+" automatically add header defend def
+function InsertHeadDef(firstLine, lastLine)
+    if a:firstLine <1 || a:lastLine> line('$')
+        echoerr 'InsertHeadDef : Range overflow !(FirstLine:'.a:firstLine.';LastLine:'.a:lastLine.';ValidRange:1~'.line('$').')'
+        return ''
+    endif
+    let sourcefilename=expand("%:t")
+    let definename=substitute(sourcefilename,' ','','g')
+    let definename=substitute(definename,'\.','_','g')
+    let definename = toupper(definename)
+    exe 'normal '.a:firstLine.'GO'
+    call setline('.', '#ifndef __'.definename."__")
+    normal ==o
+    call setline('.', '#define __'.definename."__")
+    exe 'normal =='.(a:lastLine-a:firstLine+1).'jo'
+    call setline('.', '#endif')
+    let goLn = a:firstLine+2
+    exe 'normal =='.goLn.'G'
+endfunction
+function InsertHeadDefN()
+    let firstLine = 1
+    let lastLine = line('$')
+    let n=1
+    while n < 20
+        let line = getline(n)
+        if n==1 
+            if line =~ '^\/\*.*$'
+                let n = n + 1
+                continue
+            else
+                break
+            endif
+        endif
+        if line =~ '^.*\*\/$'
+            let firstLine = n+1
+            break
+        endif
+        let n = n + 1
+    endwhile
+    call InsertHeadDef(firstLine, lastLine)
+endfunction
+nmap ,ha :call InsertHeadDefN()<CR>
+
+" YouCompleteMe config
+let g:ycm_key_list_select_completion=[]
+let g:ycm_key_list_previous_completion=[]
