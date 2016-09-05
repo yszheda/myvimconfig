@@ -6,7 +6,7 @@
 	url = https://github.com/scrooloose/nerdtree.git
 [submodule "bundle/vim-latex"]
 	path = bundle/vim-latex
-	url = git://vim-latex.git.sourceforge.net/gitroot/vim-latex/vim-latex
+    url = https://github.com/vim-latex/vim-latex.git
 [submodule "bundle/c"]
 	path = bundle/c
 	url = git://github.com/vim-scripts/c.vim.git
@@ -78,7 +78,7 @@
 	url = git@github.com:xolox/vim-misc.git
 [submodule "bundle/YouCompleteMe"]
 	path = bundle/YouCompleteMe
-	url = git@github.com:Valloric/YouCompleteMe.git
+    url = https://github.com/Valloric/YouCompleteMe.git
 [submodule "bundle/molokai"]
 	path = bundle/molokai
 #	url = git@github.com:vim-scripts/molokai.git
@@ -92,6 +92,3 @@
 [submodule "bundle/ack"]
 	path = bundle/ack
 	url = https://github.com/mileszs/ack.vim.git
-[submodule "bundle/python-mode"]
-	path = bundle/python-mode
-	url = https://github.com/klen/python-mode
