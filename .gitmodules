@@ -69,26 +69,30 @@
 	url = https://github.com/vim-scripts/vim-jsbeautify.git
 [submodule "bundle/python-mode"]
 	path = bundle/python-mode
-	url = https://github.com/klen/python-mode
+#	url = https://github.com/klen/python-mode
+    url = https://github.com/python-mode/python-mode
 [submodule "bundle/vim-lua-ftplugin"]
 	path = bundle/vim-lua-ftplugin
-	url = git@github.com:xolox/vim-lua-ftplugin.git
+#    url = git@github.com:xolox/vim-lua-ftplugin.git
+    url = https://github.com/xolox/vim-lua-ftplugin.git
 [submodule "bundle/vim-misc"]
 	path = bundle/vim-misc
-	url = git@github.com:xolox/vim-misc.git
+#	url = git@github.com:xolox/vim-misc.git
+	url = https://github.com/xolox/vim-misc.git
 [submodule "bundle/YouCompleteMe"]
 	path = bundle/YouCompleteMe
     url = https://github.com/Valloric/YouCompleteMe.git
 [submodule "bundle/molokai"]
-	path = bundle/molokai
+    path = bundle/molokai
 #	url = git@github.com:vim-scripts/molokai.git
-	url = git@github.com:tomasr/molokai.git
+#   url = git@github.com:tomasr/molokai.git
+    url = https://github.com/tomasr/molokai.git
 [submodule "bundle/syntastic"]
-	path = bundle/syntastic
-	url = https://github.com/scrooloose/syntastic.git
+    path = bundle/syntastic
+    url = https://github.com/scrooloose/syntastic.git
 [submodule "bundle/ag"]
-	path = bundle/ag
-	url = https://github.com/rking/ag.vim.git
+    path = bundle/ag
+    url = https://github.com/rking/ag.vim.git
 [submodule "bundle/ack"]
-	path = bundle/ack
-	url = https://github.com/mileszs/ack.vim.git
+    path = bundle/ack
+    url = https://github.com/mileszs/ack.vim.git
