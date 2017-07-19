@@ -150,8 +150,7 @@ autocmd! bufwritepost .vimrc source ~/.vimrc
 " added by ys
 " 2011-7-21
 map <F3> :silent! Tlist<CR>
-" brew install ctags in /usr/local/bin/
-let Tlist_Ctags_Cmd = '/usr/local/bin/ctags'
+let Tlist_Ctags_Cmd = 'ctags'
 let Tlist_Show_One_File = 1
 let Tlist_File_Fold_Auto_Close = 1
 let Tlist_Exit_OnlyWindow = 1
@@ -303,7 +302,7 @@ let g:vimwiki_use_mouse = 1
 let g:vimwiki_list = [{"path": "~/Dropbox/VimWiki", "path_html": "~/Dropbox/VimWiki/Sites/wiki", "auto_export": 1}]
 
 " server config
-colorscheme delek
+colorscheme elflord
 
 " by default
 let g:jsbeautify_engine = "node"
@@ -363,6 +362,9 @@ nmap ,ha :call InsertHeadDefN()<CR>
 " YouCompleteMe config
 let g:ycm_key_list_select_completion=[]
 let g:ycm_key_list_previous_completion=[]
+
+let g:clang_use_library = 1
+let g:clang_library_path = '/usr/lib/llvm-4.0/lib/'
 
 " sliver_searcher config
 " configure ag.vim to always start searching from your project root instead of
