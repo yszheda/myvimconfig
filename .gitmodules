@@ -1,60 +1,60 @@
 [submodule "bundle/vim-pathogen"]
 	path = bundle/vim-pathogen
-	url = git://github.com/tpope/vim-pathogen.git
+	url = https://github.com/tpope/vim-pathogen
 [submodule "bundle/nerdtree"]
 	path = bundle/nerdtree
-	url = https://github.com/scrooloose/nerdtree.git
+	url = https://github.com/scrooloose/nerdtree
 [submodule "bundle/c"]
 	path = bundle/c
-	url = git://github.com/vim-scripts/c.vim.git
+	url = https://github.com/vim-scripts/c.vim
 [submodule "bundle/a"]
 	path = bundle/a
-	url = git://github.com/vim-scripts/a.vim.git
+	url = https://github.com/vim-scripts/a.vim
 [submodule "bundle/FencView"]
 	path = bundle/FencView
-	url = git://github.com/vim-scripts/FencView.vim.git
+	url = https://github.com/vim-scripts/FencView.vim
 [submodule "bundle/DoxygenToolkit"]
 	path = bundle/DoxygenToolkit
-	url = git://github.com/vim-scripts/DoxygenToolkit.vim.git
+	url = https://github.com/vim-scripts/DoxygenToolkit.vim
 [submodule "bundle/fcitx"]
 	path = bundle/fcitx
-	url = git://github.com/vim-scripts/fcitx.vim.git
+	url = https://github.com/vim-scripts/fcitx.vim
 [submodule "bundle/omlet"]
 	path = bundle/omlet
-	url = git://github.com/vim-scripts/omlet.vim.git
+	url = https://github.com/vim-scripts/omlet.vim
 [submodule "bundle/OmniCppComplete"]
 	path = bundle/OmniCppComplete
-	url = git://github.com/vim-scripts/OmniCppComplete.git
+	url = https://github.com/vim-scripts/OmniCppComplete
 [submodule "bundle/ultisnips"]
 	path = bundle/ultisnips
 	url = https://github.com/SirVer/ultisnips
 [submodule "bundle/taglist"]
 	path = bundle/taglist
-	url = git://github.com/vim-scripts/taglist.vim.git
+	url = https://github.com/vim-scripts/taglist.vim
 [submodule "bundle/checksyntax"]
 	path = bundle/checksyntax
-	url = git://github.com/tomtom/checksyntax_vim.git
+	url = https://github.com/tomtom/checksyntax_vim
 [submodule "bundle/CmdlineComplete"]
 	path = bundle/CmdlineComplete
-	url = git://github.com/vim-scripts/CmdlineComplete.git
+	url = https://github.com/vim-scripts/CmdlineComplete
 [submodule "bundle/SearchComplete"]
 	path = bundle/SearchComplete
-	url = git://github.com/vim-scripts/SearchComplete.git
+	url = https://github.com/vim-scripts/SearchComplete
 [submodule "bundle/vim-bufexplorer"]
 	path = bundle/vim-bufexplorer
-	url = git://github.com/thisivan/vim-bufexplorer.git
+	url = https://github.com/thisivan/vim-bufexplorer
 [submodule "bundle/Trinity"]
 	path = bundle/Trinity
-	url = git://github.com/wesleyche/Trinity.git
+	url = https://github.com/wesleyche/Trinity
 [submodule "bundle/snipMate"]
 	path = bundle/snipMate
-	url = git://github.com/msanders/snipmate.vim.git
+	url = https://github.com/msanders/snipmate.vim
 [submodule "bundle/clang_complete"]
 	path = bundle/clang_complete
-	url = git://github.com/Rip-Rip/clang_complete.git
+	url = https://github.com/Rip-Rip/clang_complete
 [submodule "bundle/VimWiki"]
 	path = bundle/VimWiki
-	url = https://github.com/vim-scripts/vimwiki.git
+	url = https://github.com/vim-scripts/vimwiki
 [submodule "php.vim"]
 	path = php.vim
-	url = https://github.com/vim-scripts/php.vim.git
+	url = https://github.com/vim-scripts/php.vim

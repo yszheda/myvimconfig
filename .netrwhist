@@ -1,9 +1,9 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =7
-let g:netrw_dirhist_1='D:/Programming/ruby/helloWorld/demo/app'
-let g:netrw_dirhist_2='D:/Programming/ruby/helloWorld/demo/app/views'
-let g:netrw_dirhist_3='D:/Programming/ruby/helloWorld/demo/app/views/welcome'
-let g:netrw_dirhist_4='D:/Programming/C++ source code/boost_1_54_0/boost_1_54_0/boost/spirit/home/support/detail/lexer/parser/tree'
-let g:netrw_dirhist_5='C:/Users/ys'
-let g:netrw_dirhist_6='D:/Software/Vim'
-let g:netrw_dirhist_7='D:/Dropbox/galoisplusplus/source/_posts'
+let g:netrw_dirhistcnt =7
+let g:netrw_dirhist_7='/c/Users/shuyua01/Documents/Programming/dl-examples/plugindemo'
+let g:netrw_dirhist_6='/c/Users/shuyua01/Documents/Programming/dl-examples'
+let g:netrw_dirhist_5='/c/Users/shuyua01/Documents/Programming/dl-examples/apidemo'
+let g:netrw_dirhist_4='/c/Users/shuyua01/Documents/ys-work/gbuilder'
+let g:netrw_dirhist_3='/c/Users/shuyua01/Documents/ys-work/layer-lib'
+let g:netrw_dirhist_2='/c/Users/shuyua01/Documents/ys-work'
+let g:netrw_dirhist_1='/c/Users/shuyua01/Documents/ys-work/gbuilder'
