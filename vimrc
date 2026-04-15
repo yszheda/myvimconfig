@@ -18,6 +18,48 @@ set nocompatible
 runtime bundle/vim-pathogen/autoload/pathogen.vim
 call pathogen#infect()
 
+" vim-lsp configuration
+if executable('clangd')
+    au User lsp_setup call lsp#register_server({
+        \ 'name': 'clangd',
+        \ 'cmd': {server_info->['clangd']},
+        \ 'allowlist': ['c', 'cpp', 'objc', 'objcpp', 'cuda', 'opencl'],
+        \ })
+endif
+
+if executable('pylsp')
+    au User lsp_setup call lsp#register_server({
+        \ 'name': 'pylsp',
+        \ 'cmd': {server_info->['pylsp']},
+        \ 'allowlist': ['python'],
+        \ })
+endif
+
+" Enable LSP diagnostics (replaces syntastic)
+let g:lsp_diagnostics_enabled = 1
+
+" Enable text edits from LSP server
+let g:lsp_text_edit_enabled = 1
+
+" vim-vsnip integration with LSP
+let g:vsnip_filetypes = {}
+
+" Autocomplete: accept completion with Enter
+if exists('*complete_info')
+    inoremap <expr> <cr> complete_info().selected != -1 ? "\<C-y>" : "\<C-g>u\<CR>"
+endif
+
+" LSP key mappings
+nnoremap <silent> <leader>ld <cmd>call lsp#show_line_diagnostics()<CR>
+nnoremap <silent> <leader>lf <cmd>call lsp#show_float_diagnostics()<CR>
+nnoremap <silent> <leader>la <cmd>call lsp#show_code_action()<CR>
+nnoremap <silent> <leader>lr <cmd>call lsp#rename()<CR>
+nnoremap <silent> <leader>lh <cmd>call lsp#peek_definition()<CR>
+nnoremap <silent> <leader>gd <cmd>call lsp#definition()<CR>
+nnoremap <silent> <leader>gr <cmd>call lsp#references()<CR>
+nnoremap <silent> <leader>gi <cmd>call lsp#implementation()<CR>
+nnoremap <silent> <leader>gt <cmd>call lsp#type_definition()<CR>
+
 " added by ys
 " 2011-8-4
 " reference: Vimer's blogs
