@@ -202,7 +202,7 @@ augroup END
 let g:lsp_settings = {
 \   'clangd': {
 \     'cmdline': ['clangd', '--background-index', '--clang-tidy'],
-\     'whitelist': ['c', 'cpp', 'cuda', 'opencl'],
+\     'whitelist': ['c', 'cpp'],
 \   },
 \   'pyright': {
 \     'whitelist': ['python'],
