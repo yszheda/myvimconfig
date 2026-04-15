@@ -55,7 +55,6 @@ set tabstop=4		" set the appearance of <TABLE> equals to 4 spaces
 " set vb t_vb
 " set nowrap		" never automatically change line
 " set the font
-" set guifont=Bitstream_Vera_Sans_Mono:h9:cANSI
 " set gfw=幼?:h10:cGB2312
 
 " For Win32 GUI: remove 't' flag from 'guioptions': no tearoff menu entries
@@ -143,22 +142,6 @@ map <silent> <leader>ee :e ~/.vimrc<cr>
 " When .vimrc is edited, reload it
 autocmd! bufwritepost .vimrc source ~/.vimrc
 
-" Tag list (ctags)
-" added by ys
-" 2011-7-21
-map <F3> :silent! Tlist<CR>
-if g:iswindows==1
-  let Tlist_Ctags_Cmd = 'ctags'
-else
-  let Tlist_Ctags_Cmd = '/usr/bin/ctags'
-endif
-let Tlist_Show_One_File = 1
-let Tlist_File_Fold_Auto_Close = 1
-let Tlist_Exit_OnlyWindow = 1
-let Tlist_Use_Right_Window = 1
-let Tlist_Process_File_Always = 0
-let Tlist_Inc_Winwidth = 0
-
 " Encoding
 " added by ys
 " 2011-7-21
@@ -177,144 +160,8 @@ set fileencodings=utf-8,gbk
 " 	set ambiwidth = double
 " endif
 " set nobomb
-" FencView
-" 2011-8-6
-let g:fencview_autodetect = 0
-map <F2> :FencView<CR>
-
-" added by ys
-" 2011-8-4
-" reference: Vimer's blogs
-map <F11> :call Do_CsTag()<CR>
-" nmap <C-@>s :cs find s <C-R>=expand("<cword>")<CR><CR>:copen<CR>
-" nmap <C-@>g :cs find g <C-R>=expand("<cword>")<CR><CR>
-" nmap <C-@>c :cs find c <C-R>=expand("<cword>")<CR><CR>:copen<CR>
-" nmap <C-@>t :cs find t <C-R>=expand("<cword>")<CR><CR>:copen<CR>
-" nmap <C-@>e :cs find e <C-R>=expand("<cword>")<CR><CR>:copen<CR>
-" nmap <C-@>f :cs find f <C-R>=expand("<cfile>")<CR><CR>:copen<CR>
-" nmap <C-@>i :cs find i ^<C-R>=expand("<cfile>")<CR>$<CR>:copen<CR>
-" nmap <C-@>d :cs find d <C-R>=expand("<cword>")<CR><CR>:copen<CR>
-function! Do_CsTag()
-    let dir = getcwd()
-    if filereadable("tags")
-        if(g:iswindows==1)
-            let tagsdeleted=delete(dir."\\"."tags")
-        else
-            let tagsdeleted=delete("./"."tags")
-        endif
-        if(tagsdeleted!=0)
-            echohl WarningMsg | echo "Fail to do tags! I cannot delete the tags" | echohl None
-            return
-        endif
-    endif
-    if has("cscope")
-        silent! execute "cs kill -1"
-    endif
-    if filereadable("cscope.files")
-        if(g:iswindows==1)
-            let csfilesdeleted=delete(dir."\\"."cscope.files")
-        else
-            let csfilesdeleted=delete("./"."cscope.files")
-        endif
-        if(csfilesdeleted!=0)
-            echohl WarningMsg | echo "Fail to do cscope! I cannot delete the cscope.files" | echohl None
-            return
-        endif
-    endif
-    if filereadable("cscope.out")
-        if(g:iswindows==1)
-            let csoutdeleted=delete(dir."\\"."cscope.out")
-        else
-            let csoutdeleted=delete("./"."cscope.out")
-        endif
-        if(csoutdeleted!=0)
-            echohl WarningMsg | echo "Fail to do cscope! I cannot delete the cscope.out" | echohl None
-            return
-        endif
-    endif
-    if(executable('ctags'))
-        "silent! execute "!ctags -R --c-types=+p --fields=+S *"
-        silent! execute "!ctags -R --c++-kinds=+p --fields=+iaS --extra=+q ."
-    endif
-    if(executable('cscope') && has("cscope") )
-        if(g:iswindows!=1)
-            silent! execute "!find . -name '*.h' -o -name '*.c' -o -name '*.cpp' -o -name '*.hpp' -o -name '*.cu' -o -name '*.py' -o -name '*.java' -o -name '*.cs' > cscope.files"
-        else
-            silent! execute "!dir /s/b *.c,*.cpp, *.hpp, *.h,*.cu,*.py*.java,*.cs >> cscope.files"
-        endif
-        silent! execute "!cscope -b"
-        execute "normal :"
-        if filereadable("cscope.out")
-            execute "cs add cscope.out"
-        endif
-    endif
-endfunction
-
-
-" added by ys
-" 2011-8-6
-" reference: Vimer's blogs
-" DoxygenToolkit
-map fg : Dox<cr>
-let g:DoxygenToolkit_authorName="Shuai Yuan"
-let g:DoxygenToolkit_licenseTag="My own license\<enter>"
-let g:DoxygenToolkit_undocTag="DOXIGEN_SKIP_BLOCK"
-let g:DoxygenToolkit_briefTag_pre = "@brief\t"
-let g:DoxygenToolkit_paramTag_pre = "@param\t"
-let g:DoxygenToolkit_returnTag = "@return\t"
-let g:DoxygenToolkit_briefTag_funcName = "no"
-let g:DoxygenToolkit_maxFunctionProtoLines = 30
-
-" REQUIRED. This makes vim invoke Latex-Suite when you open a tex file.
-filetype plugin on
-
-" IMPORTANT: win32 users will need to have 'shellslash' set so that latex
-" can be called correctly.
-set shellslash
-
-" IMPORTANT: grep will sometimes skip displaying the file name if you
-" search in a singe file. This will confuse Latex-Suite. Set your grep
-" program to always generate a file-name.
-set grepprg=grep\ -nH\ $*
-
-" OPTIONAL: This enables automatic indentation as you type.
-filetype indent on
-
-" OPTIONAL: Starting with Vim 7, the filetype of empty .tex files defaults to
-" 'plaintex' instead of 'tex', which results in vim-latex not being loaded.
-" The following changes the default filetype back to 'tex':
-let g:tex_flavor='latex'
 
 set nu
-
-function! s:insert_gates()
-  let gatename = substitute(toupper(expand("%:t")), "\\.", "_", "g")
-  execute "normal! i#ifndef " . gatename
-  execute "normal! o#define " . gatename . " "
-  execute "normal! Go#endif /* " . gatename . " */"
-  normal! kk
-endfunction
-autocmd BufNewFile *.{h,hpp} call <SID>insert_gates()
-
-let g:C_SourceCodeExtensions  = 'h cc cp cxx cpp CPP c++ C i ii'
-
-if g:iswindows==1
-  " windows gvim font setting
-  set guifont=Consolas:h14
-  " windows colorscheme setting: download molokai.vim to <vim{version}>/colors/
-  colo molokai
-  " use Exuberant Ctags for win32
-  set tags=tags;
-  set autochdir
-  " encoding settings for chinese
-  set encoding=utf-8
-  set termencoding=utf-8
-  set fileencoding=utf-8
-  set fileencodings=ucs-bom,utf-8,chinese,cp936
-  source $VIMRUNTIME/delmenu.vim
-  source $VIMRUNTIME/menu.vim
-  language messages zh_CN.utf-8
-endif
 
 " VimWiki settings
 let g:vimwiki_use_mouse = 1
