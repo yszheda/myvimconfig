@@ -7,51 +7,12 @@
 [submodule "bundle/c"]
 	path = bundle/c
 	url = https://github.com/vim-scripts/c.vim
-[submodule "bundle/a"]
-	path = bundle/a
-	url = https://github.com/vim-scripts/a.vim
-[submodule "bundle/FencView"]
-	path = bundle/FencView
-	url = https://github.com/vim-scripts/FencView.vim
-[submodule "bundle/DoxygenToolkit"]
-	path = bundle/DoxygenToolkit
-	url = https://github.com/vim-scripts/DoxygenToolkit.vim
-[submodule "bundle/fcitx"]
-	path = bundle/fcitx
-	url = https://github.com/vim-scripts/fcitx.vim
-[submodule "bundle/omlet"]
-	path = bundle/omlet
-	url = https://github.com/vim-scripts/omlet.vim
-[submodule "bundle/OmniCppComplete"]
-	path = bundle/OmniCppComplete
-	url = https://github.com/vim-scripts/OmniCppComplete
 [submodule "bundle/ultisnips"]
 	path = bundle/ultisnips
 	url = https://github.com/SirVer/ultisnips
-[submodule "bundle/taglist"]
-	path = bundle/taglist
-	url = https://github.com/vim-scripts/taglist.vim
-[submodule "bundle/checksyntax"]
-	path = bundle/checksyntax
-	url = https://github.com/tomtom/checksyntax_vim
-[submodule "bundle/CmdlineComplete"]
-	path = bundle/CmdlineComplete
-	url = https://github.com/vim-scripts/CmdlineComplete
-[submodule "bundle/SearchComplete"]
-	path = bundle/SearchComplete
-	url = https://github.com/vim-scripts/SearchComplete
 [submodule "bundle/vim-bufexplorer"]
 	path = bundle/vim-bufexplorer
 	url = https://github.com/thisivan/vim-bufexplorer
-[submodule "bundle/Trinity"]
-	path = bundle/Trinity
-	url = https://github.com/wesleyche/Trinity
-[submodule "bundle/snipMate"]
-	path = bundle/snipMate
-	url = https://github.com/msanders/snipmate.vim
-[submodule "bundle/clang_complete"]
-	path = bundle/clang_complete
-	url = https://github.com/Rip-Rip/clang_complete
 [submodule "bundle/VimWiki"]
 	path = bundle/VimWiki
 	url = https://github.com/vim-scripts/vimwiki
