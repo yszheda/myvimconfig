@@ -166,3 +166,48 @@ set nu
 " VimWiki settings
 let g:vimwiki_use_mouse = 1
 let g:vimwiki_list = [{"path": "D:/Dropbox/VimWiki", "path_html": "D:/Dropbox/VimWiki/Sites/wiki", "auto_export": 1}]
+
+" ============================================================================
+" LSP Configuration (vim-lsp + asyncomplete + vim-lsp-settings)
+" ============================================================================
+
+" LSP keymaps
+nnoremap <silent> gd :<C-u>LspDefinition<CR>
+nnoremap <silent> gD :<C-u>LspDeclaration<CR>
+nnoremap <silent> gr :<C-u>LspReferences<CR>
+nnoremap <silent> <leader>rn :<C-u>LspRename<CR>
+nnoremap <silent> K :<C-u>LspHover<CR>
+nnoremap <silent> <leader>ca :<C-u>LspCodeAction<CR>
+nnoremap <silent> <F3> :NERDTreeToggle<CR>
+
+" LSP diagnostics
+let g:lsp_diagnostics_enabled = 1
+let g:lsp_diagnostics_echo_cursor = 1
+
+" asyncomplete completion settings
+set completeopt=menuone,noinsert,noselect
+let g:asyncomplete_auto_popup = 1
+let g:asyncomplete_auto_completeopt = 1
+let g:asyncomplete_popup_delay = 0
+
+" Filetype mappings for CUDA and OpenCL -> cpp (so clangd handles them)
+augroup lsp_filetype_mappings
+  autocmd!
+  autocmd BufNewFile,BufRead *.cu,*.cuh set filetype=cpp
+  autocmd BufNewFile,BufRead *.cl set filetype=cpp
+augroup END
+
+" LSP server configuration via vim-lsp-settings
+" clangd for C/C++/CUDA/OpenCL
+let g:lsp_settings = {
+\   'clangd': {
+\     'cmdline': ['clangd', '--background-index', '--clang-tidy'],
+\     'whitelist': ['c', 'cpp', 'cuda', 'opencl'],
+\   },
+\   'pyright': {
+\     'whitelist': ['python'],
+\   },
+\}
+
+" Allow vim-lsp-settings to auto-install servers
+let g:lsp_settings_enable_suggestions = 1
