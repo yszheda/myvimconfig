@@ -10,15 +10,9 @@
 [submodule "bundle/ultisnips"]
 	path = bundle/ultisnips
 	url = https://github.com/SirVer/ultisnips
-[submodule "bundle/vim-bufexplorer"]
-	path = bundle/vim-bufexplorer
-	url = https://github.com/thisivan/vim-bufexplorer
 [submodule "bundle/VimWiki"]
 	path = bundle/VimWiki
 	url = https://github.com/vim-scripts/vimwiki
-[submodule "php.vim"]
-	path = php.vim
-	url = https://github.com/vim-scripts/php.vim
 [submodule "bundle/vim-lsp"]
 	path = bundle/vim-lsp
 	url = https://github.com/prabirshrestha/vim-lsp
