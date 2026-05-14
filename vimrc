@@ -190,10 +190,10 @@ let g:asyncomplete_auto_popup = 1
 let g:asyncomplete_auto_completeopt = 1
 let g:asyncomplete_popup_delay = 0
 
-" Filetype mappings for CUDA and OpenCL -> cpp (so clangd handles them)
+" Filetype mappings: CUDA gets cuda syntax, OpenCL -> cpp (clangd handles both)
 augroup lsp_filetype_mappings
   autocmd!
-  autocmd BufNewFile,BufRead *.cu,*.cuh set filetype=cpp
+  autocmd BufNewFile,BufRead *.cu,*.cuh set filetype=cuda
   autocmd BufNewFile,BufRead *.cl set filetype=cpp
 augroup END
 
@@ -202,7 +202,7 @@ augroup END
 let g:lsp_settings = {
 \   'clangd': {
 \     'cmdline': ['clangd', '--background-index', '--clang-tidy'],
-\     'whitelist': ['c', 'cpp'],
+\     'whitelist': ['c', 'cpp', 'cuda'],
 \   },
 \   'pyright': {
 \     'whitelist': ['python'],
