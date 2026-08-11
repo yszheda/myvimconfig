@@ -10,6 +10,13 @@
 "  for MS-DOS and Win32:  $VIM\_vimrc
 "	    for OpenVMS:  sys$login:.vimrc
 
+" Make the shared ~/.vim runtime available to both Git Vim and native Vim.
+let s:vim_config_dir = expand('~/.vim')
+if isdirectory(s:vim_config_dir) && index(split(&runtimepath, ','), s:vim_config_dir) < 0
+  let &runtimepath = s:vim_config_dir . ',' . &runtimepath
+endif
+unlet s:vim_config_dir
+
 " add pathogen to manage plugins.
 runtime bundle/vim-pathogen/autoload/pathogen.vim
 call pathogen#infect()
@@ -183,6 +190,13 @@ nnoremap <silent> <F3> :NERDTreeToggle<CR>
 " LSP diagnostics
 let g:lsp_diagnostics_enabled = 1
 let g:lsp_diagnostics_echo_cursor = 1
+let g:lsp_text_edit_enabled = 1
+
+" Configure the buffer after a language server is attached.
+augroup lsp_buffer_configuration
+  autocmd!
+  autocmd User lsp_buffer_enabled setlocal omnifunc=lsp#complete
+augroup END
 
 " asyncomplete completion settings
 set completeopt=menuone,noinsert,noselect
@@ -193,7 +207,7 @@ let g:asyncomplete_popup_delay = 0
 " Filetype mappings: CUDA gets cuda syntax, OpenCL -> cpp (clangd handles both)
 augroup lsp_filetype_mappings
   autocmd!
-  autocmd BufNewFile,BufRead *.cu,*.cuh set filetype=cuda
+  autocmd BufNewFile,BufRead *.cu,*.cuh,*.cps set filetype=cuda
   autocmd BufNewFile,BufRead *.cl set filetype=cpp
 augroup END
 
@@ -201,13 +215,16 @@ augroup END
 " clangd for C/C++/CUDA/OpenCL
 let g:lsp_settings = {
 \   'clangd': {
-\     'cmdline': ['clangd', '--background-index', '--clang-tidy'],
-\     'whitelist': ['c', 'cpp', 'cuda'],
+\     'args': ['--background-index', '--clang-tidy'],
+\     'allowlist': ['c', 'cpp', 'cuda'],
 \   },
 \   'pyright': {
-\     'whitelist': ['python'],
+\     'allowlist': ['python'],
 \   },
 \}
 
 " Allow vim-lsp-settings to auto-install servers
 let g:lsp_settings_enable_suggestions = 1
+
+" Search the standard Windows LLVM install location for clangd.
+let g:lsp_settings_extra_paths = ['C:/Program Files/LLVM/bin']
