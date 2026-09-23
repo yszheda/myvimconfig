@@ -15,6 +15,11 @@ let s:vim_config_dir = expand('~/.vim')
 if isdirectory(s:vim_config_dir) && index(split(&runtimepath, ','), s:vim_config_dir) < 0
   let &runtimepath = s:vim_config_dir . ',' . &runtimepath
 endif
+let s:vim_after_dir = s:vim_config_dir . '/after'
+if isdirectory(s:vim_after_dir) && index(split(&runtimepath, ','), s:vim_after_dir) < 0
+  let &runtimepath = &runtimepath . ',' . s:vim_after_dir
+endif
+unlet s:vim_after_dir
 unlet s:vim_config_dir
 
 " add pathogen to manage plugins.
@@ -61,8 +66,6 @@ set incsearch		" do incremental searching
 set tabstop=4		" set the appearance of <TABLE> equals to 4 spaces
 " set vb t_vb
 " set nowrap		" never automatically change line
-" set the font
-" set gfw=幼?:h10:cGB2312
 
 " For Win32 GUI: remove 't' flag from 'guioptions': no tearoff menu entries
 " let &guioptions = substitute(&guioptions, "t", "", "g")
@@ -207,7 +210,8 @@ let g:asyncomplete_popup_delay = 0
 " Filetype mappings: CUDA gets cuda syntax, OpenCL -> cpp (clangd handles both)
 augroup lsp_filetype_mappings
   autocmd!
-  autocmd BufNewFile,BufRead *.cu,*.cuh,*.cps set filetype=cuda
+  autocmd BufNewFile,BufRead *.cu,*.cuh,*.cps,*.cpsh set filetype=cuda
+  autocmd BufNewFile,BufRead *.s,*.asm set filetype=asm
   autocmd BufNewFile,BufRead *.cl set filetype=cpp
 augroup END
 
@@ -218,13 +222,68 @@ let g:lsp_settings = {
 \     'args': ['--background-index', '--clang-tidy'],
 \     'allowlist': ['c', 'cpp', 'cuda'],
 \   },
-\   'pyright': {
+\   'pyright-langserver': {
+\     'allowlist': ['python'],
+\   },
+\   'basedpyright-langserver': {
 \     'allowlist': ['python'],
 \   },
 \}
 
-" Allow vim-lsp-settings to auto-install servers
-let g:lsp_settings_enable_suggestions = 1
+" Do not prompt to install missing language servers
+let g:lsp_settings_enable_suggestions = 0
+function! s:compass_python_lsp_default() abort
+  for l:server in ['basedpyright-langserver', 'pyright-langserver', 'jedi-language-server', 'pylsp']
+    if exists('*lsp_settings#executable') && lsp_settings#executable(l:server)
+      return l:server
+    endif
+  endfor
+  return ''
+endfunction
+let g:lsp_settings_filetype_python = [function('<SID>compass_python_lsp_default')]
 
 " Search the standard Windows LLVM install location for clangd.
-let g:lsp_settings_extra_paths = ['C:/Program Files/LLVM/bin']
+let g:lsp_settings_extra_paths = [
+\   'C:/Program Files/LLVM/bin',
+\   expand('~/AppData/Roaming/npm'),
+\   expand('~/AppData/Local/Programs/Python/Python314/Scripts'),
+\]
+
+" Compass project-local Vim LSP configuration loader
+" The repository generator creates .clangd-lsp/vim_lsp.vim from the current Git HEAD.
+function! s:load_compass_project_lsp() abort
+  if &buftype !=# '' || empty(expand('%:p'))
+    return
+  endif
+  let l:gitdir = finddir('.git', expand('%:p:h') . ';' )
+  let l:gitfile = findfile('.git', expand('%:p:h') . ';' )
+  if empty(l:gitdir) && empty(l:gitfile)
+    return
+  endif
+  let l:gitentry = !empty(l:gitdir) ? l:gitdir : l:gitfile
+  let l:config = fnamemodify(l:gitentry, ':h') . '/.clangd-lsp/vim_lsp.vim'
+  if !filereadable(l:config)
+    return
+  endif
+  if get(g:, 'compass_lsp_project_config', '') !=# l:config
+    unlet! g:compass_repo_lsp_loaded
+    unlet! g:compass_repo_lsp_diagnostics
+    execute 'source ' . fnameescape(l:config)
+    let g:compass_lsp_project_config = l:config
+  endif
+  setlocal omnifunc=lsp#complete
+  if exists('*lsp#disable_diagnostics_for_buffer')
+    if get(g:, 'compass_repo_lsp_diagnostics', 0)
+      call lsp#enable_diagnostics_for_buffer()
+    else
+      call lsp#disable_diagnostics_for_buffer()
+    endif
+  endif
+endfunction
+
+augroup compass_project_lsp_loader
+  autocmd!
+  autocmd BufReadPost,BufNewFile,BufEnter * call <SID>load_compass_project_lsp()
+augroup END
+
+set guifont=Lucida_Console:h12:cANSI:qDRAFT
